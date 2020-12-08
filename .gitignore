@@ -5,4 +5,12 @@
 !.elasticbeanstalk/*.global.yml
 
 # Generated data
-volumes
+volumes/app/mattermost/client-plugins
+volumes/app/mattermost/data
+volumes/app/mattermost/logs
+volumes/app/mattermost/plugins
+volumes/db
+volumes/web
+kcg-plugin/**/*
+
+

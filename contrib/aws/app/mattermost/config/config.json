@@ -1,6 +1,6 @@
 {
   "ServiceSettings": {
-    "SiteURL": "",
+    "SiteURL": "https://kcg-connects-dev.ngrok.io",
     "WebsocketURL": "",
     "LicenseFileLocation": "",
     "ListenAddress": ":8000",
@@ -79,7 +79,7 @@
     "EnableEmailInvitations": false
   },
   "TeamSettings": {
-    "SiteName": "Mattermost",
+    "SiteName": "KCG Connects Online",
     "MaxUsersPerTeam": 50,
     "EnableTeamCreation": true,
     "EnableUserCreation": true,
