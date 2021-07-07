@@ -6,3 +6,8 @@
 4. Run this command to create folders that will be shared with the virtual machines that Mattermost is running on `mkdir -pv ./volumes/app/mattermost/{data,logs,config,plugins,client-plugins}`
 5. Run this command `sudo chown -R $(whoami) ./volumes` to make your current shell user the owner of the shared folders you just created.
 6. Run `docker-compose up -d` to start Mattermost.
+
+# Troubleshooting
+
+## If you see a permissions error relating to entrypoint.sh
+1. Make sure you have run chmod +x entrypoint.sh on all 3 entrypoint.sh files (app/entrypoint.sh, db/entrypoint.sh, web/entrypoint.sh) 

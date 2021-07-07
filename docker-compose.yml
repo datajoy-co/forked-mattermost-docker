@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db:
+    platform: linux/amd64
     build: db
     read_only: true
     restart: unless-stopped
@@ -21,13 +22,14 @@ services:
     #  - AWS_REGION=us-east-1
 
   app:
+    platform: linux/amd64
     build:
       context: app
       # uncomment following lines for team edition or change UID/GID
       args:
         - edition=team
-        - PUID=502
-        - PGID=502
+        - PUID=501
+        - PGID=501
     restart: unless-stopped
     volumes:
       - ./volumes/app/mattermost/config:/mattermost/config:rw
@@ -53,6 +55,7 @@ services:
       #- MM_CONFIG=/mattermost/config/config.json
 
   web:
+    platform: linux/amd64
     build: web
     ports:
       - '8065:80'

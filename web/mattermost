@@ -6,40 +6,42 @@ map $http_x_forwarded_proto $proxy_x_forwarded_proto {
 server {
     listen 80;
 
-    if ( $http_user_agent ~* iphone ) {
-      set $block_iphone  "1";
-    }
+    location ~ /api/v[0-9]+/system/ping {
+        if ( $http_user_agent ~* iphone ) {
+          set $block_iphone  "1";
+        }
 
-    if ( $http_user_agent !~* safari ) {
-      set $block_iphone  "${block_iphone}1";
-    }
+        if ( $http_user_agent !~* safari ) {
+          set $block_iphone  "${block_iphone}1";
+        }
 
-    if ($block_iphone = "11") {
-      return 403;
-    }
+        if ($block_iphone = "11") {
+          return 403;
+        }
 
-    if ( $http_user_agent ~* android ) {
-      set $block_android  "1";
-    }
+        if ( $http_user_agent ~* android ) {
+          set $block_android  "1";
+        }
 
-    if ( $http_user_agent ~* version/ ) {
-      set $block_android  "${block_android}1";
-    }
+        if ( $http_user_agent ~* version/ ) {
+          set $block_android  "${block_android}1";
+        }
 
-    if ($block_android = "11") {
-      return 403;
-    }
+        if ($block_android = "11") {
+          return 403;
+        }
 
-    if ( $http_user_agent ~* ipad ) {
-      set $block_ipad  "1";
-    }
+        if ( $http_user_agent ~* ipad ) {
+          set $block_ipad  "1";
+        }
 
-    if ( $http_user_agent !~* safari ) {
-      set $block_ipad  "${block_ipad}1";
-    }
+        if ( $http_user_agent !~* safari ) {
+          set $block_ipad  "${block_ipad}1";
+        }
 
-    if ($block_ipad = "11") {
-      return 403;
+        if ($block_ipad = "11") {
+          return 403;
+        }
     }
 
     location ~ /api/v[0-9]+/(users/)?websocket$ {
